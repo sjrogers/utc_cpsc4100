@@ -46,6 +46,22 @@
 ;            (mapzip fn (cdr lst))
 ;            )))
 
+; question 9
+; return a string, stripped of its spaces
+
+; general case: remove occurences of chars in list from given string
+
+; make a quick filter fn 
+(define (char-filter targets)
+    (lambda (candidate) (if (member candidate targets) #f #t)))
+; strip specific characters from string
+(define (strip-chars str charlist)
+    (list->string (filter (char-filter charlist) (string->list str))))
+
+; strip spaces as specified in assignment
+(define (strip-spaces str)
+        (strip-chars str (list #\space)))
+
 ; question 10
 ; return a list where contents are equal to lengths of subsequences of identical values
 ; in the list
@@ -73,27 +89,8 @@
         (receive (cardupes remaining)
             (partition (lambda (x) (eq? x (car lst))) lst)
             (cons (length cardupes) (seqcount remaining)))))
-; helper function to check if element in list
-;(define (contains? lst ))
 
 ; count occurrences of element at list head
 (define (headcount lst)
     (let ([target (car lst)])
     (length (filter (lambda (val) (eq? target val)) lst))))
-
-; helper function identifies the unique values in a list
-(define (uniques lst acc)
-    (if (null? lst) acc
-        ; else...
-        (let ([current (car lst)])
-            (if (member current acc) (uniques (cdr lst) acc)
-            ;else
-            (cons (cons current acc) (uniques (cdr lst) acc)))
-    )))
-; helper function
-; in: list to analyze, value defining subsequence
-; out: list of (n . remaining), where
-;    n = repetitions of given value at front of list
-;    remaining = list after given value and its repetitions are removed
-;(define (subseq lst acc)
-;    (if (eq? (cdr lst) val)))
