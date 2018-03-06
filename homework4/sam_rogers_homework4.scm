@@ -8,6 +8,14 @@
 ; question 3
 ; euclidian distance between p1 and p2 in arbitrary dimensions
 ; d = sqrt( (x1 - x2)*2 + (y1 - y2)*2 + ...)
+(define p1 (list 0 0 0))
+(define p2 (list 10 0 0))
+
+; helper fn
+(define (squares diffs) (map (
+
+(define (distance pointA pointB)
+    (sqrt (apply + (map (lambda (x) (* x x)) (map - pointA pointB)))))
 
 ; question 4
 ; given a list, return a list containing only the atoms
