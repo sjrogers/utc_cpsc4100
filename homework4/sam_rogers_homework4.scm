@@ -34,24 +34,10 @@
   (map (lambda (x) (abs (- z x))) lst))
 
 ; question 7
+(define (make-pair a b) (cons a b))
 ; return list of cons cells where car is the index of cdr's position in given list
 (define (enumerate lst)
-    (map (lambda (index, el) (cons index el))
-        (range 0 (length lst) 1) ; first arg to lambda
-        lst ; second arg to lambda
-    ))
-    ;(if (null? lst) lst ; base case: return empty list if given
-    ;; else...
-    ;(cons (cons ))))
-; custom zip function of which enum is general case
-;(define (zip list1 list2)
-;  (if (eq? list1 (list)) list1
-;      (cons (car list1) (car list2)) (zip (cdr list1) (cdr list2))))
-;(define (mapzip fn lst)
-;  (if (eq? lst '()) lst ; return empty if empty
-;      (cons (fn (car lst)) ; otherwise apply fn and recur
-;            (mapzip fn (cdr lst))
-;            )))
+    (map make-pair (range 0 (length lst) 1) lst))
 
 ; question 9
 ; return a string, stripped of its spaces
