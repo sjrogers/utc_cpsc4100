@@ -1,5 +1,5 @@
 ; question 1
-(define (yourname) ("Sam Rogers"))
+(define (yourname) "Sam Rogers")
 
 ; question 2
 (define (a+bx a b x)
