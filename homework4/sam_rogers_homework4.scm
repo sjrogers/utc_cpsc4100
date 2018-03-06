@@ -43,6 +43,20 @@
         (range 0 (length lst) 1)
         lst))
 
+; question 8
+; match command to operation
+(use-modules (ice-9 match)) ; for pattern matching
+(define (cmd opname)
+    (match opname
+        ('upper string-upcase)
+        ('lower string-downcase)
+        ('reverse string-reverse)
+        ('size string-length)
+        ; default case (do nothing, unknown cmd, etc.)
+        (_ (lambda (x) x))))
+; specified procedure
+(define (convert opname str) ((cmd opname) str))
+
 ; question 9
 ; return a string, stripped of its spaces
 
