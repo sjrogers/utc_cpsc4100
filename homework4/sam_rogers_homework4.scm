@@ -34,10 +34,12 @@
   (map (lambda (x) (abs (- z x))) lst))
 
 ; question 7
-(define (make-pair a b) (cons a b))
 ; return list of cons cells where car is the index of cdr's position in given list
 (define (enumerate lst)
-    (map make-pair (range 0 (length lst) 1) lst))
+    (map
+        (lambda (a b) (cons a b))
+        (range 0 (length lst) 1)
+        lst))
 
 ; question 9
 ; return a string, stripped of its spaces
@@ -74,8 +76,3 @@
         (receive (cardupes remaining) ; bind to these identifiers...
             (partition (lambda (x) (eq? x (car lst))) lst) ; ...the values returned by partition
             (cons (length cardupes) (seqcount remaining))))) ; count and recur on remaining elements
-
-; count occurrences of element at list head
-(define (headcount lst)
-    (let ([target (car lst)])
-    (length (filter (lambda (val) (eq? target val)) lst))))
