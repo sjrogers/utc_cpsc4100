@@ -51,12 +51,12 @@
 
 ; general case: remove occurences of chars in list from given string
 
-; make a quick filter fn 
-(define (char-filter targets)
-    (lambda (candidate) (if (member candidate targets) #f #t)))
-; strip specific characters from string
+; strip given characters from string and return new string
 (define (strip-chars str charlist)
-    (list->string (filter (char-filter charlist) (string->list str))))
+    (list->string
+        (filter
+            (lambda (candidate) (if (member candidate charlist) #f #t))
+        (string->list str))))
 
 ; strip spaces as specified in assignment
 (define (strip-spaces str)
