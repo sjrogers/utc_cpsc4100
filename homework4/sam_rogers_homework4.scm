@@ -55,7 +55,10 @@
 (define (strip-chars str charlist)
     (list->string
         (filter
-            (lambda (candidate) (if (member candidate charlist) #f #t))
+            ; member returns a list if the requested item is in the list,
+            ;   otherwise returns #f so if result is a NOT a list, then
+            ;   we keep the candidate because it isn't in the deletion list
+            (lambda (candidate) (not (list? (member candidate charlist))))
         (string->list str))))
 
 ; strip spaces as specified in assignment
