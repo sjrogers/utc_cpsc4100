@@ -35,7 +35,14 @@
 
 ; question 7
 ; return list of cons cells where car is the index of cdr's position in given list
-;(define (enumerate lst))
+(define (enumerate lst)
+    (map (lambda (index, el) (cons index el))
+        (range 0 (length lst) 1) ; first arg to lambda
+        lst ; second arg to lambda
+    ))
+    ;(if (null? lst) lst ; base case: return empty list if given
+    ;; else...
+    ;(cons (cons ))))
 ; custom zip function of which enum is general case
 ;(define (zip list1 list2)
 ;  (if (eq? list1 (list)) list1
