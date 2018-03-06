@@ -50,8 +50,6 @@
 ; return a string, stripped of its spaces
 
 ; general case: remove occurences of chars in list from given string
-
-; strip given characters from string and return new string
 (define (strip-chars str charlist)
     (list->string
         (filter
@@ -61,37 +59,28 @@
             (lambda (candidate) (not (list? (member candidate charlist))))
         (string->list str))))
 
-; strip spaces as specified in assignment
+; procedure strip-spaces as specified in assignment
 (define (strip-spaces str)
         (strip-chars str (list #\space)))
 
 ; question 10
 ; return a list where contents are equal to lengths of subsequences of identical values
 ; in the list
-; ex:
-; scheme@ ( guile - user ) > ( seqcount ’(1 1 1 2 2 3 4 5 foo foo foo ))
-;$3 = (3 2 1 1 1 3)
-;scheme@ ( guile - user ) > ( seqcount ’(1 2 3))
-;$4 = (1 1 1)
-;scheme@ ( guile - user ) > ( seqcount ’(1 2 2 3))
-;$5 = (1 2 1)
-;scheme@ ( guile - user ) > ( seqcount ’())
-;$6 = ()
-(define q10list '( 1 1 1 2 2 3 4 5 foo foo foo ))
 
 ; observe: A sequence is by definition ordered, therefore for any given element there is
-;   one subsequence that contains ALL duplications of the element. In other words, we
-;   need not identify potentially scattered subsequences of an element in order to sum
-;   their counts. We can simply list the number of repetitions of each unique element.
-(import (rnrs lists (6)))
-(use-modules (ice-9 receive))
+;   one subsequence containing ALL duplications of it. Therefore, we can simply list the
+;   number of repetitions of each unique element.
+
+(import (rnrs lists (6))) ; for partition procedure
+(use-modules (ice-9 receive)) ; for binding multiple return values
+; define seqcount procedure
 (define (seqcount lst)
     (if (null? lst)
-        '()
-        ; else partition
-        (receive (cardupes remaining)
-            (partition (lambda (x) (eq? x (car lst))) lst)
-            (cons (length cardupes) (seqcount remaining)))))
+        lst ; base case: return empty list as its own result
+        ; else...
+        (receive (cardupes remaining) ; bind to these identifiers...
+            (partition (lambda (x) (eq? x (car lst))) lst) ; ...the values returned by partition
+            (cons (length cardupes) (seqcount remaining))))) ; count and recur on remaining elements
 
 ; count occurrences of element at list head
 (define (headcount lst)
