@@ -1,19 +1,13 @@
 ; question 1
-(define (yourname) ("Sam Rogers"))
+(define (yourname) "Sam Rogers")
 
 ; question 2
 (define (a+bx a b x)
   (+ a (* b x)))
 
 ; question 3
-; euclidian distance between p1 and p2 in arbitrary dimensions
+; euclidian distance between p1 and p2 in arbitrary # of dimensions
 ; d = sqrt( (x1 - x2)*2 + (y1 - y2)*2 + ...)
-(define p1 (list 0 0 0))
-(define p2 (list 10 0 0))
-
-; helper fn
-(define (squares diffs) (map (
-
 (define (distance pointA pointB)
     (sqrt (apply + (map (lambda (x) (* x x)) (map - pointA pointB)))))
 
@@ -30,7 +24,7 @@
 
 ; general range function
 (define (range start end step)
-  (if (eq? end start)
+  (if (<= end start)
       '()
       (cons start (range (+ start step) end step))))
 ; the specific case in the assignment
