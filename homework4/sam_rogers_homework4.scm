@@ -2,8 +2,8 @@
 (define (yourname) ("Sam Rogers"))
 
 ; question 2
-;(define (a+bx a b x)
-;  (+ a (* b x)))
+(define (a+bx a b x)
+  (+ a (* b x)))
 
 ; question 3
 ; euclidian distance between p1 and p2 in arbitrary dimensions
