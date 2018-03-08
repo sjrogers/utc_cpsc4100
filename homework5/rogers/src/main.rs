@@ -1,20 +1,26 @@
 extern crate num;
-use num::Num;
 
 fn main() {
     println!("Hello, world!");
 }
 
-fn yourname() -> String {
-    "Sam Rogers".to_string()
+mod homework {
+    use num::Num;
+    pub fn yourname() -> String {
+        "Sam Rogers".to_string()
+    }
+
+    pub fn a_plus_bx<N: Num>(a: N, b: N, c: N) -> N {
+        a + b * c
 }
 
-fn a_plus_bx<N: Num>(a: N, b: N, c: N) -> N {
-    a + b * c
+    pub fn distance() -> bool { true }
 }
+
 #[cfg(test)]
 mod tests {
-    use {yourname, a_plus_bx};
+    use homework::{yourname, a_plus_bx, distance};
+
     #[test]
     fn question1() {
         assert!(yourname() == "Sam Rogers".to_string())
@@ -23,5 +29,10 @@ mod tests {
     #[test]
     fn question2() {
         assert!(a_plus_bx(1, 2, 3) == 7)
+    }
+
+    #[test]
+    fn question3() {
+        assert!(distance())
     }
 }
