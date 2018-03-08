@@ -1,3 +1,8 @@
+; Sam Rogers
+; CPSC4100: Homework 4
+; Prof Craig Tanis
+; 08 March 2018
+
 ; question 1
 (define (yourname) "Sam Rogers")
 
