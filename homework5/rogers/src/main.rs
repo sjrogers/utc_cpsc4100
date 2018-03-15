@@ -5,6 +5,7 @@ fn main() {
 }
 
 mod homework {
+    use num;
     use num::{Num};
     use std::ops::Range;
 
@@ -26,11 +27,24 @@ mod homework {
     // pub fn atoms_only() {}
 
     pub fn build_list(start: u64, end: u64) -> Range<u64> { start..end }
+    
+    // MAPPING CLOSURES IS HARDER IN RUST!
+    pub fn diff(origin: i64, lst: Vec<i64>) -> Vec<i64> {
+        // let origin = origin.to_owned();
+        let f = |x: &i64| { (x - origin).abs() };
+        lst.iter().map(f).rev().collect()
+    }
+    // pub fn diff<N>(origin: N, lst: Vec<N>) -> Vec<N>
+    //     where N: num::Signed {
+    //     // let f = |n: N| -> N { n - origin };
+    //     let mut result = lst.iter().map(|&n| -> N { n });//.rev().collect();
+    //     result.rev().collect()
+    // }
 }
 
 #[cfg(test)]
 mod tests {
-    use homework::{yourname, a_plus_bx, build_list};
+    use homework::{yourname, a_plus_bx, build_list, diff};
 
     #[test]
     fn question1() {
@@ -54,5 +68,14 @@ mod tests {
         let expected = s..e;
         let result = build_list(s, e);
         assert!(result == expected)
+    }
+
+    #[test]
+    fn question6() {
+        let o = 10;
+        let lst = vec![8, 9, 10, 11, 12];
+        let expected = vec![2, 1, 0, 1, 2];
+        let result = diff(o, lst);
+        assert_eq!(result, expected)
     }
 }
