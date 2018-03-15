@@ -5,7 +5,6 @@ fn main() {
 }
 
 mod homework {
-    use num;
     use num::{Num};
     use std::ops::Range;
 
@@ -30,7 +29,6 @@ mod homework {
     
     // MAPPING CLOSURES IS HARDER IN RUST!
     pub fn diff(origin: i64, lst: Vec<i64>) -> Vec<i64> {
-        // let origin = origin.to_owned();
         let f = |x: &i64| { (x - origin).abs() };
         lst.iter().map(f).rev().collect()
     }
