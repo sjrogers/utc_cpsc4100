@@ -1,2 +1,12 @@
 # editor files
 *.sublime-*
+
+# build files
+*.o
+*/target/*
+
+# files related to packaging for assignment format
+*.txt
+*.pdf
+*.zip
+*.png

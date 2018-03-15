@@ -12,7 +12,7 @@ mod homework {
 
     pub fn a_plus_bx<N: Num>(a: N, b: N, c: N) -> N {
         a + b * c
-}
+    }
 
     pub fn distance() -> bool { true }
 }
