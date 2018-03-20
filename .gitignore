@@ -3,7 +3,7 @@
 
 # build files
 *.o
-*/target/*
+*target/*
 
 # files related to packaging for assignment format
 *.txt
