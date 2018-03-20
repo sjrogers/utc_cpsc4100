@@ -8,11 +8,12 @@ mod homework {
     use num::{Num};
     use std::ops::Range;
 
-
+    // QUESTION 1
     pub fn yourname() -> String {
         "Sam Rogers".to_string()
     }
 
+    // QUESTION 2
     pub fn a_plus_bx<N: Num>(a: N, b: N, c: N) -> N {
         a + b * c
     }
@@ -23,10 +24,13 @@ mod homework {
     //     <N as Num>::from_str_radix("100", 10).ok()
     // }
 
+    // QUESTION 4
     // pub fn atoms_only() {}
 
+    // QUESTION 5
     pub fn build_list(start: u64, end: u64) -> Range<u64> { start..end }
     
+    // QUESTION 6
     // MAPPING CLOSURES IS HARDER IN RUST!
     pub fn diff(origin: i64, lst: Vec<i64>) -> Vec<i64> {
         let f = |x: &i64| { (x - origin).abs() };
@@ -38,6 +42,14 @@ mod homework {
     //     let mut result = lst.iter().map(|&n| -> N { n });//.rev().collect();
     //     result.rev().collect()
     // }
+
+    // QUESTION 7
+
+    // QUESTION 8
+
+    // QUESTION 9
+
+    // QUESTION 10
 }
 
 #[cfg(test)]
