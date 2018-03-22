@@ -25,6 +25,7 @@ mod homework {
     // }
 
     // QUESTION 4
+    // In the context of Rust, we define an atom as anything immutable or of a primitive type.
     // pub fn atoms_only() {}
 
     // QUESTION 5
