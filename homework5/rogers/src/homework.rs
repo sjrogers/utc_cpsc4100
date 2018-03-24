@@ -23,7 +23,11 @@ pub fn a_plus_bx<N: num::Num>(a: N, b: N, c: N) -> N {
 // }
 
 // QUESTION 4
-// In the context of Rust, we define an atom as anything immutable or of a primitive type.
+/* In the context of Rust, we will define atoms as values that are
+ * immutable AND cannot be broken down. This rules out collections
+ * as well as strings. We can achieve an "atoms only" filter fn
+ * by means of pattern-matching with traits that disqualify.
+ */
 // pub fn atoms_only() {}
 
 // QUESTION 5
