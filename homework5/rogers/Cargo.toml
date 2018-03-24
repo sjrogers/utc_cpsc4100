@@ -3,5 +3,9 @@ name = "rogers"
 version = "0.1.0"
 authors = ["Sam Rogers <sjr@samrogers.org>"]
 
+[lib]
+name = "librogers"
+path = "src/lib.rs"
+
 [dependencies]
 num = "0.1.42"
