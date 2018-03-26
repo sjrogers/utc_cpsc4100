@@ -39,12 +39,6 @@ pub fn diff(origin: i64, lst: Vec<i64>) -> Vec<i64> {
     let f = |x: &i64| { (x - origin).abs() };
     lst.iter().map(f).rev().collect()
 }
-// pub fn diff<N>(origin: N, lst: Vec<N>) -> Vec<N>
-//     where N: num::Signed {
-//     // let f = |n: N| -> N { n - origin };
-//     let mut result = lst.iter().map(|&n| -> N { n });//.rev().collect();
-//     result.rev().collect()
-// }
 
 // QUESTION 7
 
