@@ -49,6 +49,15 @@ pub fn diff(origin: i64, lst: Vec<i64>) -> Vec<i64> {
 // QUESTION 7
 
 // QUESTION 8
+pub fn convert(opname: &str, arg: &str) -> String {
+    match opname {
+        "upper" => arg.to_string().to_uppercase(),
+        "lower" => arg.to_string().to_lowercase(),
+        "reverse" => arg.chars().rev().collect::<String>(),
+        "size" => arg.to_string().len().to_string(),
+        _ => opname.to_string()
+    }
+}
 
 // QUESTION 9
 
