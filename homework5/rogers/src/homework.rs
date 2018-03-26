@@ -60,5 +60,8 @@ pub fn convert(opname: &str, arg: &str) -> String {
 }
 
 // QUESTION 9
+pub fn strip_spaces(original: &str) -> String {
+    original.replace(" ", "").to_string()
+}
 
 // QUESTION 10

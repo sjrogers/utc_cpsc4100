@@ -2,7 +2,7 @@ extern crate librogers;
 
 #[cfg(test)]
 mod tests {
-    use librogers::homework::{yourname, a_plus_bx, build_list, diff};
+    use librogers::homework::{yourname, a_plus_bx, build_list, diff, strip_spaces};
 
     #[test]
     fn question1() {
@@ -35,5 +35,12 @@ mod tests {
         let expected = vec![2, 1, 0, 1, 2];
         let result = diff(o, lst);
         assert_eq!(result, expected)
+    }
+
+    #[test]
+    fn question9() {
+        let spaced = "this is a test";
+        let result = strip_spaces(spaced);
+        assert_eq!(result, "thisisatest");
     }
 }
