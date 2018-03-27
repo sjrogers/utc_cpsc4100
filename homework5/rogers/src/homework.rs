@@ -80,23 +80,23 @@ impl<T: Iterator> From<T> for SeqCount<T> {
 impl<T: Iterator> Iterator for SeqCount<T> where T::Item: PartialEq {
     type Item = (T::Item, u32);
     fn next(&mut self) -> Option<(T::Item, u32)> {
-        let ch = match self.next.take() {
-            Some (ch) => ch,
+        let x = match self.next.take() {
+            Some (x) => x,
             None => match self.iter.next() {
-                Some (ch) => ch,
+                Some (x) => x,
                 None => return None
             }
         };
         let mut count = 1;
         loop {
             match self.iter.next() {
-                None => {return Some((ch, count))},
-                Some (next) => {
-                    if next == ch {
+                None => {return Some((x, count))},
+                Some (y) => {
+                    if y == x {
                         count += 1
                     } else {
-                        self.next = Some (next);
-                        return Some((ch, count))
+                        self.next = Some (y);
+                        return Some((x, count))
                     }
                 }
             }
