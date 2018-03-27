@@ -3,7 +3,6 @@
 //! author: Sam Rogers
 //! Interested parties may use this code under terms of the WTFPL.
 extern crate num;
-extern crate itertools;
 
 use std::ops::Range;
 

@@ -9,4 +9,4 @@ path = "src/lib.rs"
 
 [dependencies]
 num = "0.1.42"
-itertools = "0.7.3"
+num-traits = "0.2"
