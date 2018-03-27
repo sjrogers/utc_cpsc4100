@@ -2,7 +2,7 @@ extern crate librogers;
 
 #[cfg(test)]
 mod tests {
-    use librogers::homework::{yourname, a_plus_bx, build_list, diff, strip_spaces};
+    use librogers::homework::{yourname, a_plus_bx, build_list, diff, strip_spaces, convert};
 
     #[test]
     fn question1() {
@@ -35,6 +35,16 @@ mod tests {
         let expected = vec![2, 1, 0, 1, 2];
         let result = diff(o, lst);
         assert_eq!(result, expected)
+    }
+
+    #[test]
+    fn question8() {
+        let s = yourname();
+        assert_eq!(convert("upper", &s), s.to_string().to_uppercase());
+        assert_eq!(convert("lower", &s), s.to_string().to_lowercase());
+        assert_eq!(convert("reverse", &s), s.chars().rev().collect::<String>());
+        assert_eq!(convert("size", &s), s.to_string().len().to_string());
+        assert_eq!(convert("invalid_op", &s), "invalid_op".to_string());
     }
 
     #[test]
