@@ -2,7 +2,7 @@ extern crate librogers;
 
 #[cfg(test)]
 mod tests {
-    use librogers::homework::{yourname, a_plus_bx, build_list, diff, distance, enumerate, convert, strip_spaces};
+    use librogers::homework::{yourname, a_plus_bx, build_list, diff, distance, enumerate, convert, strip_spaces, SeqCount};
 
     #[test]
     fn question1() {
@@ -65,5 +65,14 @@ mod tests {
         let spaced = "this is a test";
         let result = strip_spaces(spaced);
         assert_eq!(result, "thisisatest");
+    }
+
+    #[test]
+    fn question10() {
+        let test_iter = [1, 1, 1, 2, 2, 3, 4, 5];
+        let expecteds = [3, 2, 1, 1, 1];
+        let actuals = SeqCount::from(test_iter.iter()).map(|tup| tup.1);
+        let result = actuals.zip(expecteds.iter());
+        for (actual, expected) in result { assert_eq!(actual, *expected) }
     }
 }

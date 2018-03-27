@@ -73,6 +73,33 @@ pub fn strip_spaces(original: &str) -> String {
 }
 
 // QUESTION 10
-// use itertools::Itertools;
-// fn seqcount(lst: &[i64]) -> &[i64]{
-// }
+pub struct SeqCount<T: Iterator> { iter: T, next: Option<T::Item> }
+impl<T: Iterator> From<T> for SeqCount<T> {
+    fn from (iter: T) -> SeqCount<T> {SeqCount {iter: iter, next: None}}
+}
+impl<T: Iterator> Iterator for SeqCount<T> where T::Item: PartialEq {
+    type Item = (T::Item, u32);
+    fn next(&mut self) -> Option<(T::Item, u32)> {
+        let ch = match self.next.take() {
+            Some (ch) => ch,
+            None => match self.iter.next() {
+                Some (ch) => ch,
+                None => return None
+            }
+        };
+        let mut count = 1;
+        loop {
+            match self.iter.next() {
+                None => {return Some((ch, count))},
+                Some (next) => {
+                    if next == ch {
+                        count += 1
+                    } else {
+                        self.next = Some (next);
+                        return Some((ch, count))
+                    }
+                }
+            }
+        }
+    }
+}
