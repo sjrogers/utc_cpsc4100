@@ -16,11 +16,21 @@ pub fn a_plus_bx<N: num::Num>(a: N, b: N, c: N) -> N {
     a + b * c
 }
 
-// pub fn distance<N: Num>(pointA: &Vec<N>, pointB: &Vec<N>) -> N {
-//     let zipped = pointA.iter().zip(pointB);
-//     // zipped;
-//     <N as Num>::from_str_radix("100", 10).ok()
-// }
+// QUESTION 3
+// takes two f64 slices that share the same arbitrary length
+pub fn distance(first: &[f64], second: &[f64]) -> Result<f64, String> {
+    if first.len() == second.len() {
+        // do math
+        let zipped = first.iter().zip(second.iter());
+        let squared_diffs = zipped.map(|p| (p.0 - p.1).powi(2));
+        let sum_of_diffs = squared_diffs.fold(0.0, |acc, x| acc + x);
+        let dist = sum_of_diffs.sqrt();
+        Ok(dist)
+    } else {
+        // report error
+        Err("Slices not of same length".to_string())
+    }
+}
 
 // QUESTION 4
 /* In the context of Rust, we will define atoms as values that are

@@ -2,7 +2,7 @@ extern crate librogers;
 
 #[cfg(test)]
 mod tests {
-    use librogers::homework::{yourname, a_plus_bx, build_list, diff, strip_spaces, convert};
+    use librogers::homework::{yourname, a_plus_bx, build_list, diff, distance, convert, strip_spaces};
 
     #[test]
     fn question1() {
@@ -14,10 +14,13 @@ mod tests {
         assert!(a_plus_bx(1, 2, 3) == 7)
     }
 
-    // #[test]
-    // fn question3() {
-    //     assert!(distance())
-    // }
+    #[test]
+    fn question3() {
+        let expected = 10.0;
+        let test_a = [8f64, 0f64, 0f64];
+        let test_b = [8f64, 10f64, 0f64];
+        assert_eq!(distance(&test_a, &test_b), Ok(expected))
+    }
 
     #[test]
     fn question5() {
