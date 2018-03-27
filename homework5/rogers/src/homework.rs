@@ -73,6 +73,7 @@ pub fn strip_spaces(original: &str) -> String {
 }
 
 // QUESTION 10
+// implementation borrowed from https://tinyurl.com/rustseqcount
 pub struct SeqCount<T: Iterator> { iter: T, next: Option<T::Item> }
 impl<T: Iterator> From<T> for SeqCount<T> {
     fn from (iter: T) -> SeqCount<T> {SeqCount {iter: iter, next: None}}
