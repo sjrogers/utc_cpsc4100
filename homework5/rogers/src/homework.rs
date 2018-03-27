@@ -52,6 +52,7 @@ pub fn diff(origin: i64, lst: Vec<i64>) -> Vec<i64> {
 }
 
 // QUESTION 7
+// implementation borrowed from itertools
 use std::iter::Enumerate;
 pub fn enumerate<T>(lst: T) -> Enumerate<T:: IntoIter>
     where T: IntoIterator { lst.into_iter().enumerate() }
