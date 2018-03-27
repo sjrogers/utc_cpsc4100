@@ -2,7 +2,7 @@ extern crate librogers;
 
 #[cfg(test)]
 mod tests {
-    use librogers::homework::{yourname, a_plus_bx, build_list, diff, distance, convert, strip_spaces};
+    use librogers::homework::{yourname, a_plus_bx, build_list, diff, distance, enumerate, convert, strip_spaces};
 
     #[test]
     fn question1() {
@@ -38,6 +38,16 @@ mod tests {
         let expected = vec![2, 1, 0, 1, 2];
         let result = diff(o, lst);
         assert_eq!(result, expected)
+    }
+
+    #[test]
+    fn question7() {
+        let invals = "abcdefghijklmnopqrstuvwxyz".to_string();
+        let expected: Vec<_> = invals.chars().enumerate().collect();
+        // assert_eq!(enumerate(invals.chars()), expected)
+        for (actual, intended) in enumerate(invals.chars()).zip(expected) {
+            assert_eq!(actual, intended);
+        }
     }
 
     #[test]

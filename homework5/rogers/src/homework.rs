@@ -3,6 +3,7 @@
 //! author: Sam Rogers
 //! Interested parties may use this code under terms of the WTFPL.
 extern crate num;
+extern crate itertools;
 
 use std::ops::Range;
 
@@ -51,6 +52,9 @@ pub fn diff(origin: i64, lst: Vec<i64>) -> Vec<i64> {
 }
 
 // QUESTION 7
+use std::iter::Enumerate;
+pub fn enumerate<T>(lst: T) -> Enumerate<T:: IntoIter>
+    where T: IntoIterator { lst.into_iter().enumerate() }
 
 // QUESTION 8
 pub fn convert(opname: &str, arg: &str) -> String {
@@ -69,3 +73,6 @@ pub fn strip_spaces(original: &str) -> String {
 }
 
 // QUESTION 10
+// use itertools::Itertools;
+// fn seqcount(lst: &[i64]) -> &[i64]{
+// }
